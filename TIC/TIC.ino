@@ -1,5 +1,6 @@
 #include <SoftwareSerial.h>
 
+
 SoftwareSerial bleCon(2,3); // Rx, Tx
 
 void setup() {
