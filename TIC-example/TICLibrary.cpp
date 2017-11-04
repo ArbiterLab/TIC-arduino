@@ -6,20 +6,22 @@
 #ifndef TIC_h
 #define TIC_h
 
-SoftwareSerial TIConnect(2, 3);
 DynamicJsonBuffer _jsonBuffer;
 String temp1 = "";
+
+SoftwareSerial TIConnect(_Tx, _Rx);
+
 
 TICLibrary::TICLibrary(int Tx, int Rx) {
   _Tx = Tx;
   _Rx = Rx;
 }
 
-void TICLibrary::begin() {
+void TICLibrary::begin(void) {
   TIConnect.begin(9600);
 }
 
-bool TICLibrary::dataStream() {
+bool TICLibrary::dataStream(void) {
   if (TIConnect.available()) {
     while(TIConnect.available()) {
       char bufferChar = (char)TIConnect.read();
@@ -57,6 +59,12 @@ String TICLibrary::getPath(void) {
 String TICLibrary::getParams(void) {
   JsonObject& _jsonObject = _jsonBuffer.parseObject(temp1);
   return _jsonObject["params"].asString();
+}
+
+bool finish(void) {
+  delete TIConnect;
+  //TODO : jsonobject쪽 지우는거
+  //jsonobject 전역사용 커넥션전역사
 }
 
 #endif
