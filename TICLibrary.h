@@ -16,10 +16,10 @@ public:
   void begin(void);
   void isValuedData(void);
   String getPath(void);
-  String getParams(void);
+  String getParams(int pram1, String getB);
   bool dataStream(void);
   bool valuedData(void);
-  bool finish(void);
+  void outputData(void);
 
 private:
   int _Tx, _Rx = 0;

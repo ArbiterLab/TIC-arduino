@@ -1,3 +1,13 @@
+/*
+Copyright (c) 2017 Arbiter Lab
+See the file license.txt for copying permission.
+maintainer - podcastm1 (Tommy Kim : laino@laino.ml)
+
+
+TICLibrary.cpp - Created by Taeil Kim (Tommy Kim)
+Trust IoT Connction Library
+*/
+
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include "TICLibrary.h"
@@ -9,9 +19,8 @@
 DynamicJsonBuffer _jsonBuffer;
 String temp1 = "";
 
-SoftwareSerial TIConnect(_Tx, _Rx);
-
-
+SoftwareSerial TIConnect(2, 3);// ->
+//this method will be chaged please be careful
 TICLibrary::TICLibrary(int Tx, int Rx) {
   _Tx = Tx;
   _Rx = Rx;
@@ -56,15 +65,16 @@ String TICLibrary::getPath(void) {
   return _jsonObject["path"].asString();
 }
 
-String TICLibrary::getParams(void) {
+String TICLibrary::getParams(int pram1, String getB) {
   JsonObject& _jsonObject = _jsonBuffer.parseObject(temp1);
-  return _jsonObject["params"].asString();
+  return _jsonObject["params"][pram1][getB].asString();
 }
 
-bool finish(void) {
-  delete TIConnect;
-  //TODO : jsonobject쪽 지우는거
-  //jsonobject 전역사용 커넥션전역사
+//this method will be duplicated
+void TICLibrary::outputData(void) {
+  JsonObject& _jsonObject = _jsonBuffer.parseObject(temp1);
+  const char* output2 = _jsonObject["params"][0]["a"];
+  Serial.println(output2);
 }
 
 #endif
