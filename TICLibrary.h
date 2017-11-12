@@ -20,6 +20,7 @@ public:
   bool dataStream(void);
   bool valuedData(void);
   void outputData(void);
+  void testData(void);
 
 private:
   int _Tx, _Rx = 0;
