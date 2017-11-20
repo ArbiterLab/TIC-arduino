@@ -1,9 +1,9 @@
 /*
 TIC_library.h - Created by Taeil Kim
 Trust IoT Connction Library
- */
-#ifndef TIC_H
-#define TIC_H
+*/
+#ifndef TIC_h
+#define TIC_h
 
 #include <Arduino.h>
 #include "ArduinoJson.h"
@@ -20,6 +20,7 @@ public:
   bool dataStream(void);
   bool valuedData(void);
   void outputData(void);
+  SoftwareSerial TIConnect;
 
 private:
   int _Tx, _Rx = 0;

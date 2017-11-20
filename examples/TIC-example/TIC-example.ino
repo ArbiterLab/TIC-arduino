@@ -20,11 +20,11 @@ void setup() {
 }
 
 void play() {
-  Serial.println("play");
+  Serial.println("Is played");
 }
 
 void stop1() {
-  Serial.println("stop");
+  Serial.println("Stoped");
 }
 
 void loop() {

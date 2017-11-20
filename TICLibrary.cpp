@@ -19,9 +19,7 @@ Trust IoT Connction Library
 DynamicJsonBuffer _jsonBuffer;
 String temp1 = "";
 
-SoftwareSerial TIConnect(2, 3);// ->
-//this method will be chaged please be careful
-TICLibrary::TICLibrary(int Tx, int Rx) {
+TICLibrary::TICLibrary(int Tx, int Rx) : TIConnect(Tx, Rx) {
   _Tx = Tx;
   _Rx = Rx;
 }
