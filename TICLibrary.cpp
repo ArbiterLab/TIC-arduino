@@ -24,6 +24,10 @@ TICLibrary::TICLibrary(int Tx, int Rx) : TIConnect(Tx, Rx) {
   _Rx = Rx;
 }
 
+void TICLibrary::testData(void) {
+
+}
+
 void TICLibrary::begin(void) {
   TIConnect.begin(9600);
 }
