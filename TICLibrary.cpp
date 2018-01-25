@@ -24,10 +24,6 @@ TICLibrary::TICLibrary(int Tx, int Rx) : TIConnect(Tx, Rx) {
   _Rx = Rx;
 }
 
-void TICLibrary::testData(void) {
-
-}
-
 void TICLibrary::begin(void) {
   TIConnect.begin(9600);
 }
@@ -72,11 +68,8 @@ String TICLibrary::getParams(int pram1, String getB) {
   return _jsonObject["params"][pram1][getB].asString();
 }
 
-//this method will be duplicated
-void TICLibrary::outputData(void) {
-  JsonObject& _jsonObject = _jsonBuffer.parseObject(temp1);
-  const char* output2 = _jsonObject["params"][0]["a"];
-  Serial.println(output2);
+void sendData(JsonObject& data) {
+  data.printTo(TIConnect);
 }
 
 #endif

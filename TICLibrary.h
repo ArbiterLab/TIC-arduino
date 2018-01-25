@@ -19,8 +19,8 @@ public:
   String getParams(int pram1, String getB);
   bool dataStream(void);
   bool valuedData(void);
-  void outputData(void);
   SoftwareSerial TIConnect;
+  void sendData(JsonObject& data);
 
 private:
   int _Tx, _Rx = 0;
